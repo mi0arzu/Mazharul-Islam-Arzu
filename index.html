@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>NNNipa's Collection</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse, #29200d, #080808 72%);
+  color: #f5d477;
+  font-family: Georgia, serif;
+  text-align: center;
+}
+
+.card {
+  padding: 32px 22px;
+  width: 90%;
+  max-width: 430px;
+  animation: reveal 1.5s ease both;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #d8b45c;
+  border-radius: 50%;
+  margin: 0 auto 26px;
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+  box-shadow: 0 0 30px #d8b45c55;
+  animation: glow 2s infinite alternate;
+}
+
+h1 {
+  font-size: clamp(28px, 7vw, 40px);
+  margin: 0 0 12px;
+  text-shadow: 0 0 20px #d8b45c88;
+}
+
+p {
+  color: #e8d9b4;
+  letter-spacing: 3px;
+  font: 11px Arial, sans-serif;
+  line-height: 1.8;
+}
+
+.line {
+  height: 1px;
+  width: 100px;
+  margin: 25px auto;
+  background: linear-gradient(90deg, transparent, #f5d477, transparent);
+}
+
+button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 15px 25px;
+  border: 0;
+  border-radius: 30px;
+  background: linear-gradient(110deg, #b58a2b, #ffe9a0, #b58a2b);
+  color: #171007;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+#status {
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.spark {
+  position: fixed;
+  color: #ffe5a0;
+  pointer-events: none;
+  animation: float 4s linear infinite;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(22px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 12px #d8b45c44; }
+  to { box-shadow: 0 0 35px #d8b45caa; }
+}
+
+@keyframes float {
+  from { transform: translateY(105vh) rotate(0); opacity: 0; }
+  20% { opacity: 1; }
+  to { transform: translateY(-10vh) rotate(300deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="card">
+  <div class="logo">✦</div>
+  <h1>NNNipa's<br>Collection</h1>
+  <p>ELEGANCE · STYLE · LUXURY</p>
+  <div class="line"></div>
+  <p>WELCOME TO OUR FASHION WORLD</p>
+  <p id="status">Preparing something special for you...</p>
+
+  <button id="visit">
+    VISIT OUR FACEBOOK PAGE ↗
+  </button>
+</main>
+
+<script>
+const facebookURL =
+  "https://www.facebook.com/mazharul.islam.arzu.2024";
+
+document.getElementById("visit").addEventListener("click", () => {
+  window.location.href = facebookURL;
+});
+
+// Decorative golden sparkles
+for (let i = 0; i < 22; i++) {
+  const s = document.createElement("span");
+  s.className = "spark";
+  s.textContent = "✦";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDelay = Math.random() * 4 + "s";
+  s.style.animationDuration = (3 + Math.random() * 4) + "s";
+  s.style.fontSize = (8 + Math.random() * 12) + "px";
+  document.body.appendChild(s);
+}
+
+// Auto redirect after 5 seconds
+document.getElementById("status").textContent =
+  "Opening Facebook in 5 seconds...";
+
+setTimeout(() => {
+  window.location.replace(facebookURL);
+}, 5000);
+</script>
+</body>
+</html>
